@@ -1,24 +1,25 @@
 import './App.css';
-import Signup from './TD_signin';
-import Login from './TD_login';
+import Signup from './Signup';
+import Login from './Login';
 import Home from './Home';
-import { BrowserRouter as Router, Routes,Route, Switch } from 'react-router-dom';
+// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 
 function App() {
   return (
-   <div className="App">
+      <Login/>
+  //  <Router>
+    
+  //   <Routes>
 
-<Router>
-  <Routes>
-    <Route path='/' element={<Signup/>}/>
-    <Route path='/TD_login' element={<Login/>}/>
-    <Route path='/Home' element={<Home/>}/>
-  </Routes>
-</Router>
-   </div>
+  //     <Route path='/Signup' element={<Signup />} />
+  //     <Route path='/Login'  element={<Login />} />
+  //     <Route path='/Home'   element={<Home />} />
+  
+  //   </Routes>
+  //  </Router>
    
   );
-}
+} 
 
 export default App;

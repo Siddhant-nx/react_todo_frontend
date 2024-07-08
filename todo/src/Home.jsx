@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+// import { Link } from 'react-router-dom';
 
  function Home() {
 
@@ -15,7 +16,7 @@ import React, {useState} from 'react';
         }else{
           setError('Please enter a note');
         }
-    };
+    }; 
 
     const handleClearItem = (e) =>{
       e.preventDefault();
@@ -27,6 +28,14 @@ import React, {useState} from 'react';
       const newNotes = notes.filter((_, i) => i!== index);
       setNotes(newNotes);
     }
+
+    // const toggle = ()=>{
+    //   if(mode == 'light'){
+    //     setMode('dark');
+    //     document.body.style.backgroundColor = '#042743';
+    //     document.title = 'dark mode on ';
+    //   }
+    // }
 
   return (
     <>
@@ -48,6 +57,7 @@ import React, {useState} from 'react';
 <input  type="text" className='input-text' value={input}  onChange={(e) => setInput(e.target.value)}  placeholder='Enter item'/>
 <button type="submit" className='add-button' onClick={handleAddItem}>Add Note</button>
 <button type="submit" className='add-button' onClick={handleClearItem}>Delete all Notes</button>
+
 </div>
 <p className='error'>{error}</p>
   <div className="notes">
@@ -57,6 +67,14 @@ import React, {useState} from 'react';
 </div>
 </div>
 
+<div>
+      {/* <Link to="/Login" className='anc'>Login</Link> <br /><br />
+      <p>Not Registered?</p>
+      <Link to="/Signup" className='anc'>Signup</Link> */}
+      
+</div>
+
+{/* <button onClick={toggle}>dark mode</button> */}
 </>
 );}
 export default Home;
