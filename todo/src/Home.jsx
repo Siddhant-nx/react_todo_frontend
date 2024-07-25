@@ -1,52 +1,161 @@
-import React, {useState} from 'react';
-// import { Link } from 'react-router-dom';
+import React, {useState, useContext, useEffect} from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import AuthContext from './AuthContext';
 
  function Home() {
 
     const [notes, setNotes] = useState([]);
     const [input, setInput] = useState('');
     const [error, setError] = useState('');
+    const [ddate, setDdate] = useState('');
+    const [select, setSelected] = useState('all');
 
-    const handleAddItem = (e) => {
+    const {auth, logout} = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+      if(auth){
+      async function getAllNotes(){
+      try{
+        const token = localStorage.getItem('token');
+        if(token){
+        const getnote = await axios.get("http://127.0.0.1:8000/api/todos/", 
+          { headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        console.log(getnote.data)
+        setNotes(getnote.data)
+
+      }else{  console.log('token not found'); }
+
+      }catch(error){
+      console.log(error)
+      setError('no notes found');
+      }
+    }
+    getAllNotes()
+  } else {
+    setNotes([]);
+
+  }
+  }, [auth]);
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login')
+  }
+    const handleAddItem = async (e) => {
         e.preventDefault();
-        if (input.trim() !== '') {
-            setNotes([...notes, input]);
-            setInput('');
-            setError('');
-        }else{
-          setError('Please enter a note');
+        if (input) {
+          const newTodo = {
+            title: input,
+            due_date: ddate,
+            status: false
+          };
+    
+          try{
+            const token = localStorage.getItem('token');
+            const InsertResponse = await axios.post("http://127.0.0.1:8000/api/todos/",
+              newTodo,
+              {
+                headers: {
+                  Authorization: `Bearer ${token}`
+                }
+              },
+            );
+
+          setNotes([...notes, InsertResponse.data]);
+          setInput('');
+          setError('');
+          setDdate('');
+          console.log(InsertResponse.data);
+          }catch(error){
+        console.log('error adding',error);
         }
-    }; 
+      } else {
+        setError('note or date is missing');
+      }
+    }
+
+    const handleRemove = async(id)=>{
+      try{
+        const token = localStorage.getItem('token');
+        await axios.delete(`http://127.0.0.1:8000/api/todos/${id}/`,{
+          headers:{
+            Authorization: `Bearer ${token}`
+          }
+        });
+        setNotes(notes.filter(note=>note.id !== id))
+      }
+      catch(error){
+        console.log('error removing',error)
+      }
+    };
 
     const handleClearItem = (e) =>{
       e.preventDefault();
       setNotes([]);
       setError('');
     };
+ 
+    const current_date = new Date().toISOString().slice(0,10);
 
-    const handleRemove = (index) =>{
-      const newNotes = notes.filter((_, i) => i!== index);
-      setNotes(newNotes);
-    }
-
-    // const toggle = ()=>{
-    //   if(mode == 'light'){
-    //     setMode('dark');
-    //     document.body.style.backgroundColor = '#042743';
-    //     document.title = 'dark mode on ';
-    //   }
-    // }
+    const filterNotes = (filter)=>
+      notes.filter((note)=>{
+        switch (filter){
+          case 'duetoday':
+            return note.due_date === current_date;
+          case 'duelater':
+            return note.due_date > current_date;
+          case 'overdue':
+            return note.due_date < current_date;
+          default:
+              return true;
+        }
+      });
+  
+      const handleCheckboxChange = async (noteId, checked) => {
+        try {
+            const token = localStorage.getItem('token');
+            const updatedNote = notes.find(note => note.id === noteId);
+            updatedNote.status = checked;
+    
+            await axios.put(`http://127.0.0.1:8000/api/todos/${noteId}/`,
+                updatedNote,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
+    
+            setNotes(notes.map(note => note.id === noteId ? updatedNote : note));
+        } catch (error) {
+            console.log('error updating status', error);
+        }
+    };
 
   return (
     <>
     <div className='head-container'>
       <header className='header'>
-        <h1>profile</h1>
-        <p>To Do List 
-        <img className='img1' width="100" height="100"
-         src="https://img.icons8.com/clouds/100/todo-list.png" 
-        alt="todo-list"/>
-        </p>
+        <Link className='profile' to='/Profile'>Profile</Link>
+        <p>To Do List</p>
+    <button onClick={handleLogout} className='logout-btn'>logout</button>
+    
+        <div className="select-right">
+        <label htmlFor="filter">Filter Notes</label><br />
+        <select className='dropdown' value={select}
+         onChange={(e)=>setSelected(e.target.value)}>
+        <option value="all">All notes</option>
+        <option value="duetoday">duetoday</option>
+        <option value="duelater">due later</option>
+        <option value="overdue" >overdue</option>
+        </select>
+        </div>
+
       </header>
 
     </div>
@@ -54,25 +163,32 @@ import React, {useState} from 'react';
   <div className='main-container'>
   
 <div className='create-div'>
+<input type="date" className='date' value={ddate} onChange={(e)=>setDdate(e.target.value)}/>
 <input  type="text" className='input-text' value={input}  onChange={(e) => setInput(e.target.value)}  placeholder='Enter item'/>
 <button type="submit" className='add-button' onClick={handleAddItem}>Add Note</button>
 <button type="submit" className='add-button' onClick={handleClearItem}>Delete all Notes</button>
-
 </div>
+
+<div className="notes-container">
 <p className='error'>{error}</p>
+
   <div className="notes">
-  {notes.map((note,index) => (<p className='notes-main' key={index}>
-  <input type="checkbox" className='checkbox'/>
-  {note} <button className='rem-button' onClick={()=>handleRemove(index)}>Remove</button></p>))}
+  {filterNotes(select).map((note) => 
+    (<p className='notes-main' key={note.id}>
+  <input type="checkbox" className='checkbox' 
+   checked={note.status} 
+   onChange={(e) => handleCheckboxChange(note.id, e.target.checked)}/>
+  {note.title} <button className='rem-button' 
+  onClick={()=>handleRemove(note.id)}>Remove</button></p>))}
+  </div>
+
 </div>
 </div>
 
-<div>
-      {/* <Link to="/Login" className='anc'>Login</Link> <br /><br />
-      <p>Not Registered?</p>
-      <Link to="/Signup" className='anc'>Signup</Link> */}
-      
-</div>
+{/* <div>
+      <Link to="/Login" className='anc'>Login</Link> <br /><br />
+      <Link to="/Signup" className='anc'>Signup</Link>
+</div> */}
 
 {/* <button onClick={toggle}>dark mode</button> */}
 </>

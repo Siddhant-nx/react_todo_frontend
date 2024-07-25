@@ -1,20 +1,46 @@
 .img1{
   float: left;
 }
+.profile{
+  text-decoration:none;
+  font-size: 2cap;
+  color: aliceblue;
+}
 
-/* signin css */
+/* signup css */
 .container h2{
   font-family: sans-serif;
   margin-top: 10px;
   text-align: center;
 }
-
+.container{
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  background-color:white;
+  border: none;
+  border-radius: 6px;
+  padding: 25px;
+  max-width: 400px;
+}
 
 form{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+.signup{
+  flex-direction: column;
+  height: 55vh;
+  margin:0;
+}
+/* .userdiv{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+  width: 300px;
+} */
+
 .i1, .i2, .i3{
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.6);
   border: none;
@@ -56,15 +82,6 @@ form{
 .LButton:hover{
   background-color: rgb(40, 126, 255);
   }
-
-  /* .signup{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction: column;
-    height: 75vh;
-    margin:0;
-  } */
   .sign-btn{
     text-decoration: none;
     font-weight: 600;  
@@ -76,13 +93,6 @@ form{
 .end-div{
   margin-left: 2cap;
 }
-/* .userdiv{
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 15px;
-  width: 300px;
-} */
 
 label{
   margin-bottom: 5px;
@@ -90,15 +100,7 @@ label{
 .anc{
   text-decoration: none;
 }
-  .container{
-    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5);
-    border: none;
-    border-radius: 6px;
-    padding: 25px;
-    max-width: 400px;
-  }
-
-  .new{
+ .new{
     position: absolute;
     top: 0;
     left: 0;
@@ -106,13 +108,15 @@ label{
 .p1{
   text-align: center;
   font-size: 30px;
-  margin-top: 20px;
+  margin-top: 100px;
 }
 
 .error{
   color: red;
   text-align: center;
   font-size: 2.5vh;
+  margin-top: 20px;
+
 }
 
 .password-container{
@@ -121,17 +125,52 @@ label{
 
 /* Login page */
 .login-h2{
-  text-align: center;
-  margin-top: 20px;
+text-align: center;
+margin-top: 150px;
+}
+
+.form2{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .c2{
-  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
+  background-color: white;
   border: none;
   border-radius: 6px;
   padding: 25px;
   max-width: 400px;
-  margin-left: 400px;
+  margin: auto;
+  margin-top: 25px;
+}
+
+body{
+  margin: 0;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(270deg, #e0f7fa, #b3e5fc, #e0f7fa, #b3e5fc);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+@keyframes gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+.sign2{
+  flex-direction: column;
+  height: 40vh;
+  margin:0;
 }
 
 .toggle-password2{
@@ -141,16 +180,6 @@ label{
 .already-user2{
   margin-left: 6cap;
 }
-
-.sign{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction: column;
-  height: 75vh;
-  margin:0;
-}
-
 
 /* css for home page */
 
@@ -197,7 +226,7 @@ label{
   background-color: rgb(0, 0, 0);
   cursor: pointer;
   height: 100%;
-  margin: 10px;
+  margin: 10px; 
 }
 
 .check-button{
@@ -213,7 +242,7 @@ label{
 .add-button{
   border: none;
   color: white;
-  background-color: black;
+  background-color: rgb(0, 36, 109);
   border-radius: 4px;
   margin-left: 10px;
   cursor: pointer;
@@ -236,11 +265,9 @@ label{
   background-color: #333;
   color:white;
   padding: 10px 20px;
-  position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 1000;
 }
 
 .header h1{
@@ -252,8 +279,26 @@ label{
   font-size: xx-large;
 }
 
-.bg{
-  background-image: url('logo.jpeg');
-  background-repeat: no-repeat;
-  
+.date{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.create-div{
+  margin-top: 2px;
+  position: fixed;
+}
+.notes-container{
+  margin-top: 100px;
+}
+.select-right{
+  text-align: right;
+}
+
+.userdiv2 h6{
+  color: red;
+}
+
+.logout-btn{
+  text-align: center;
 }
