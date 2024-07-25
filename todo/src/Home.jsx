@@ -4,12 +4,12 @@ import axios from 'axios';
 import AuthContext from './AuthContext';
 
  function Home() {
-
     const [notes, setNotes] = useState([]);
     const [input, setInput] = useState('');
     const [error, setError] = useState('');
     const [ddate, setDdate] = useState('');
     const [select, setSelected] = useState('all');
+    const [search_td, setSearch_td] = useState('');
 
     const {auth, logout} = useContext(AuthContext);
     const navigate = useNavigate();
@@ -40,7 +40,7 @@ import AuthContext from './AuthContext';
     setNotes([]);
 
   }
-  }, [auth]);
+}, [auth]);
 
   const handleLogout = () => {
     logout();
@@ -102,20 +102,24 @@ import AuthContext from './AuthContext';
  
     const current_date = new Date().toISOString().slice(0,10);
 
-    const filterNotes = (filter)=>
-      notes.filter((note)=>{
+    const filterNotes = (filter)=> {
+     return notes.filter((note)=> {
+        let matchesFilter = true;
         switch (filter){
           case 'duetoday':
-            return note.due_date === current_date;
+            return matchesFilter = note.due_date === current_date;
           case 'duelater':
-            return note.due_date > current_date;
+            return matchesFilter = note.due_date > current_date;
           case 'overdue':
-            return note.due_date < current_date;
+            return matchesFilter =  note.due_date < current_date;
           default:
-              return true;
+              matchesFilter =  true;
         }
-      });
-  
+        const matchesSearch = typeof note.title === 'string' && note.title.toLowerCase().includes(search_td.toLowerCase());
+
+      return matchesFilter && matchesSearch;
+    });
+  };
       const handleCheckboxChange = async (noteId, checked) => {
         try {
             const token = localStorage.getItem('token');
@@ -139,12 +143,11 @@ import AuthContext from './AuthContext';
 
   return (
     <>
-    <div className='head-container'>
       <header className='header'>
-        <Link className='profile' to='/Profile'>Profile</Link>
+        {/* <Link className='profile' to='/Profile'>Profile</Link> */}
+        <button onClick={handleLogout} className='logout-btn'>logout</button>
         <p>To Do List</p>
-    <button onClick={handleLogout} className='logout-btn'>logout</button>
-    
+        
         <div className="select-right">
         <label htmlFor="filter">Filter Notes</label><br />
         <select className='dropdown' value={select}
@@ -155,16 +158,23 @@ import AuthContext from './AuthContext';
         <option value="overdue" >overdue</option>
         </select>
         </div>
-
       </header>
 
-    </div>
+      <div className="search-container">
+          <input 
+            type="text" 
+            className="search-input" 
+            value={search_td} 
+            onChange={(e) => setSearch_td(e.target.value)} 
+            placeholder="Search notes..."  
+          />
+        </div>
+
 
   <div className='main-container'>
-  
 <div className='create-div'>
 <input type="date" className='date' value={ddate} onChange={(e)=>setDdate(e.target.value)}/>
-<input  type="text" className='input-text' value={input}  onChange={(e) => setInput(e.target.value)}  placeholder='Enter item'/>
+<input  type="text" className='input-text' value={input}  onChange={(e) => setInput(e.target.value)}  placeholder='Enter item (<50 characters)'/>
 <button type="submit" className='add-button' onClick={handleAddItem}>Add Note</button>
 <button type="submit" className='add-button' onClick={handleClearItem}>Delete all Notes</button>
 </div>
@@ -185,13 +195,7 @@ import AuthContext from './AuthContext';
 </div>
 </div>
 
-{/* <div>
-      <Link to="/Login" className='anc'>Login</Link> <br /><br />
-      <Link to="/Signup" className='anc'>Signup</Link>
-</div> */}
-
 {/* <button onClick={toggle}>dark mode</button> */}
 </>
 );}
 export default Home;
-

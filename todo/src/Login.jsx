@@ -32,10 +32,10 @@ function Login() {
         } else {
             setError('');
         }
-            // if (password.length < 6) {
-        //     setError('*Password should be at least 6 characters long');
-        //     return;
-        // }
+            if (password.length < 6) {
+            setError('*Password should be at least 6 characters long');
+            return;
+        }
             
             navigate('/Home');
             
