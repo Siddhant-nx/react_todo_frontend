@@ -8,6 +8,7 @@ function Login() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [spassword, setSpassword] = useState(false);
+    const ip = '127.0.0.1';
     
     const { setAuth } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ function Login() {
     const handleSubmit = async(e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8000/api/account/login/', {
+            const response = await axios.post(`http://${ip}:8000/api/account/login/`, {
                 email: email,
                 password: password
             });
@@ -32,10 +33,10 @@ function Login() {
         } else {
             setError('');
         }
-            if (password.length < 6) {
-            setError('*Password should be at least 6 characters long');
-            return;
-        }
+        //     if (password.length < 6) {
+        //     setError('*Password should be at least 6 characters long');
+        //     return;
+        // }
             
             navigate('/Home');
             

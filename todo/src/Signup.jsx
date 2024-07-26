@@ -14,6 +14,7 @@ import axios from 'axios'
     const [submitted, setSubmitted] = useState('');
     const [error, setError] = useState('');
     const [spassword, setSpassword] = useState(false);
+    const ip = '127.0.0.1';
 
     const handleSubmit = async (e)=>{ 
     e.preventDefault();
@@ -36,7 +37,7 @@ import axios from 'axios'
           password: password,
         };
     try{
-        const response = await axios.post("http://127.0.0.1:8000/api/account/register/", newUser);
+        const response = await axios.post(`http://${ip}:8000/api/account/register/`, newUser);
         setSignup([...signup,response.data])
         console.log(response.data)
         

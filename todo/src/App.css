@@ -151,7 +151,7 @@ body{
   height: 100vh;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(270deg, #e0f7fa, #b3e5fc, #e0f7fa, #b3e5fc);
+  background: linear-gradient(270deg, #fff5f5, #ffebeb, #fff5f5, #ffebeb);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
@@ -289,6 +289,7 @@ body{
   margin-right: 10px;
   border-radius: 5px;
   border: 1px solid black;
+  padding: 33px;
 }
 
 .create-div{
