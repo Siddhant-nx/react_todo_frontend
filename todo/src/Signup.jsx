@@ -26,10 +26,10 @@ import axios from 'axios'
             setError('');
         }
 
-    if(password.length<6){
-        setError('Password should be atleast 6 character long');
-        return;
-    }    
+    // if(password.length<6){
+    //     setError('Password should be atleast 6 character long');
+    //     return;
+    // }    
         if(user && email && password){
         const newUser = {
           name: user,
@@ -80,7 +80,7 @@ import axios from 'axios'
                 <label htmlFor="user">*Email</label>
                 <input type="text" className='i2' value={email} onChange={(e)=>setEmail(e.target.value)} required/>
 
-                <label htmlFor="user">*Password (6+ characters) </label>
+                <label htmlFor="user">*Password </label>
                 <input type={spassword ? 'text' : 'password'}
                  className='i3'
                   value={password} onChange={(e)=> setPassword(e.target.value)} required/>

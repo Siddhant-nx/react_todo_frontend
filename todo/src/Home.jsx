@@ -66,7 +66,7 @@ import AuthContext from './AuthContext';
               },
             );
 
-          setNotes([...notes, InsertResponse.data]);
+          setNotes([InsertResponse.data, ...notes]);
           setInput('');
           setError('');
           console.log(InsertResponse.data);
@@ -165,14 +165,8 @@ import AuthContext from './AuthContext';
 
 
   <div className='main-container'>
-<div className='create-div'>
-<input  type="text" className='input-text' value={input}  onChange={(e) => setInput(e.target.value)}  placeholder='Enter item'/>
-<button type="submit" className='add-button' onClick={handleAddItem}>Add Note</button>
-</div>
 
 <div className="notes-container">
-<p className='error'>{error}</p>
-
   <div className="notes">
   {notes.filter(note => note.title.toLowerCase().includes(search_td.toLowerCase())).map((note) => 
   (<p className='notes-main' key={note.id}>
@@ -183,6 +177,11 @@ import AuthContext from './AuthContext';
   onClick={()=>handleRemove(note.id)}>Remove</button></p>))}
   </div>
 
+</div>
+<p className='error'>{error}</p>
+<div className='create-div'>
+<input  type="text" className='input-text' value={input}  onChange={(e) => setInput(e.target.value)}  placeholder='Enter item'/>
+<button type="submit" className='add-button' onClick={handleAddItem}>Add Note</button>
 </div>
 </div>
 </>

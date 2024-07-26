@@ -66,7 +66,7 @@ function Login() {
                                 required
                             />
 
-                            <label htmlFor="user">*Password (6+ characters) </label>
+                            <label htmlFor="user">*Password </label>
                             <input
                                 type={spassword ? 'text' : 'password'}
                                 className='i3'
