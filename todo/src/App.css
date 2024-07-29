@@ -14,8 +14,8 @@
   text-align: center;
 }
 .container{
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-  background-color:white;
+  /* box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); */
+  /* background-color:white; */
   border: none;
   border-radius: 6px;
   padding: 25px;
@@ -45,11 +45,13 @@ form{
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.6);
   border: none;
   color: rgb(0, 0, 0);
-  border-radius: 2px;
-  margin-bottom: 10px;
+  border-radius: 7px;
   width: 90%;
   padding: 8px;
-}
+  margin: 15px; 
+  margin-bottom: 15px;
+  margin-left: 20px;
+  }
 
 .toggle-password{
   border: none;
@@ -63,9 +65,9 @@ form{
 .LButton{
   padding: 10px;
   color: rgb(0, 0, 0);
-  background-color: rgb(19, 78, 255); /* (139, 204, 226);*/
+  background-color: rgb(221, 183, 89); /* (139, 204, 226);*/
   border: none;
-  border-radius: 100px;
+  border-radius: 10px;
   font-weight: 620;
   font-size: 17px;
   cursor: pointer;
@@ -80,12 +82,13 @@ form{
   margin-left: 1.5cap;
 }
 .LButton:hover{
-  background-color: rgb(40, 126, 255);
+  background-color: rgb(228, 195, 113);
   }
   .sign-btn{
     text-decoration: none;
     font-weight: 600;  
     margin-left: 2cap;
+    color: rgb(191, 157, 72);
   }
 .already-user{
   margin-bottom: 10px; 
@@ -109,6 +112,7 @@ label{
   text-align: center;
   font-size: 30px;
   margin-top: 100px;
+  font-weight: 600;
 }
 
 .error{
@@ -116,7 +120,6 @@ label{
   text-align: center;
   font-size: 2.5vh;
   margin-top: 20px;
-
 }
 
 .password-container{
@@ -126,7 +129,7 @@ label{
 /* Login page */
 .login-h2{
 text-align: center;
-margin-top: 150px;
+margin-top: 120px;
 }
 
 .form2{
@@ -136,14 +139,15 @@ margin-top: 150px;
 }
 
 .c2{
-  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
-  background-color: white;
+  /* box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5); */
+  /* background-color: white; */
   border: none;
   border-radius: 6px;
   padding: 25px;
   max-width: 400px;
   margin: auto;
-  margin-top: 25px;
+  /* margin-top: 25px; */
+  height: 51vh;
 }
 
 body{
@@ -151,7 +155,7 @@ body{
   height: 100vh;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(270deg, #fff5f5, #ffebeb, #fff5f5, #ffebeb);
+  background: linear-gradient(to bottom right, #fff9e6, #fffff0); /* linear-gradient(270deg, #fff5f5, #ffebeb, #fff5f5, #ffebeb); */
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
@@ -173,15 +177,28 @@ body{
   margin:0;
 }
 
+.sign-btn2{
+  text-decoration: none;
+  font-weight: 600;  
+  margin-left: 0.5cap;
+  color: rgb(191, 157, 72);;
+}
+
 .toggle-password2{
   border: none;
   margin-left:17.5cap;
 }
+.forget-pass{
+  border: none;
+  margin-left: 20px;
+  background: none;
+  font-weight: 550;
+}
 .already-user2{
-  margin-left: 6cap;
+  margin-left: 10cap;
 }
 
-/* css for home page */
+/*  home page */
 
 .checkbox{
   width: 25px;
@@ -203,7 +220,7 @@ body{
 .main-container{
   margin-top: 20px;
   padding: 20px;
-  height: 80vh;
+  height: 75vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -229,12 +246,8 @@ body{
 
 .rem-button{
   border: none;
-  border-radius: 4px;
-  color: white;
-  background-color: rgb(0, 0, 0);
-  cursor: pointer;
-  height: 100%;
-  margin: 10px; 
+  background: none;
+  margin-bottom: 5px;
 }
 
 .check-button{
@@ -248,7 +261,7 @@ body{
 }
 
 .add-button{
-  border: none;
+  /* border: none;
   color: white;
   background-color: rgb(0, 0, 0);
   border-radius: 10px;
@@ -256,11 +269,9 @@ body{
   cursor: pointer;
   height: 10vh;
   width: 15vh;
-  font-weight: 500;
-}
-.add-button:hover{
-  height: 10.1vh;
-  width: 15.1vh;
+  font-weight: 500; */
+  border: none;
+  background: transparent;
 }
 
 .input-text{
@@ -271,7 +282,7 @@ body{
 }
 
 .header{
-  background-color: #333;
+  background-color:  rgb(237, 208, 135);
   color:white;
   padding: 10px 20px;
   width: 100%;
@@ -285,12 +296,9 @@ body{
 }
 
 .logout-btn{
-  background-color: rgb(234, 0, 0);
-  color: white;
   border: none;
-  border-radius: 20px;
-  padding: 5px 20px;
-  float: right;
+  float: left;
+  background: none;
 }
 
 .date{
@@ -324,9 +332,9 @@ body{
  cursor: pointer;
 }
 
-.search-container{
-display: flex;
-justify-content: center;
+.search-main{
+  display: flex;
+  justify-content: center;
 }
 
 .search-input{
@@ -347,4 +355,56 @@ justify-content: center;
   .search-input {
     width: 95%;
   }
+}
+
+/* Singup_verification page */
+.container3{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
+  max-width: 400px;
+  margin: auto;
+  /* height: 51vh; */
+}
+.LButton2{
+  background-color: rgb(221, 183, 89); /* (139, 204, 226);*/
+  border: none;
+  border-radius: 10px;
+  font-weight: 620;
+  font-size: 17px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  margin-top: 20px;
+  box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  color: rgb(255, 255, 255);
+  width:90%;
+  text-decoration: none;
+  text-align: center;
+  margin-left: 1.5cap;
+}
+
+.verify-h2{
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 10px;
+}
+.otp-label{
+  font-weight: 500;
+  margin-left: 25px;
+}
+
+.i12{
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.6);
+    border: none;
+    color: rgb(0, 0, 0);
+    border-radius: 7px;
+    width: 400px;
+    padding: 8px;
+    margin: 15px; 
+    margin-bottom: 1px;
+    margin-left: 20px;
+    margin-top: 40px;
 }

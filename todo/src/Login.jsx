@@ -22,24 +22,15 @@ function Login() {
             });
             const { access } = response.data;
             
-            localStorage.setItem('token', access); //local
-            setAuth(access); //context
-            console.log('token :',access); //log
+            localStorage.setItem('token', access); 
+            setAuth(access); 
+            console.log('token :',access);
 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            setError('*Email is not valid');
-            return;
-        } else {
-            setError('');
-        }
         //     if (password.length < 6) {
         //     setError('*Password should be at least 6 characters long');
         //     return;
         // }
-            
-            navigate('/Home');
-            
+        navigate('/Home');
         } catch (error) {
             console.error('Error logging in:', error);
             setError('Invalid email or password');
@@ -50,43 +41,57 @@ function Login() {
         setSpassword(!spassword);
     };
 
+    const verify =(e)=>{
+        e.preventDefault();
+        navigate('/LoginVerify');
+    }
+
     return (
-        <>
-            <h2 className='login-h2'>Welcome Back</h2>
+        <> 
+            <h2 className='login-h2'>Hi, Welcome Back</h2>
             <div className='c2'>
                 <form className='form2' onSubmit={handleSubmit}>
                     <div className='sign2'>
                         <div className='userdiv2'>
-                            <label htmlFor="user">*Email</label>
+                            {/* <label htmlFor="user">*Email</label> */}
                             <input
                                 type="text"
                                 className='i2'
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
+                                placeholder='Enter your email'
                                 required
                             />
 
-                            <label htmlFor="user">*Password </label>
+                            {/* <label htmlFor="user">*Password </label> */}
                             <input
                                 type={spassword ? 'text' : 'password'}
                                 className='i3'
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
+                                placeholder='Enter your password'
                                 required
                             />
-                            <button
+                            {/* <button
                                 type='button'
                                 className='toggle-password2'
                                 onClick={togglePassword}
                             >
                                 {spassword ? 'Hide Password' : 'Show Password'}
+                            </button> */}
+
+                            <button
+                                type='button'
+                                className='forget-pass'
+                                onClick={verify}>
+                               forgot password?
                             </button>
 
                             <button type='submit' className='LButton'>Login</button>
 
                             <div className='end-div'></div>
                             <label className='already-user2'>New user?</label>
-                            <Link className="sign-btn" to="/Signup">Signup</Link>
+                            <Link className="sign-btn2" to="/Signup">Signup</Link>
                             <p className='error'>{error}</p>
                         </div>
                     </div>

@@ -2,6 +2,9 @@ import React, {useState, useContext, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import AuthContext from './AuthContext';
+import svg from './svg.svg'
+import add from './add.svg'
+import log from './logout.svg'
 
  function Home() {
     const [notes, setNotes] = useState([]);
@@ -74,7 +77,7 @@ import AuthContext from './AuthContext';
         console.log('error adding',error);
         }
       } else {
-        setError('note or date is missing');
+        setError('Enter a note');
       }
     }
 
@@ -138,7 +141,7 @@ import AuthContext from './AuthContext';
   return (
     <>
       <header className='header'>
-        <button onClick={handleLogout} className='logout-btn'>logout</button>
+        <button onClick={handleLogout} className='logout-btn'>logout  <img src={log} height='40' width='40'/></button>
         <p>To Do List</p>
         
         {/* <div className="select-right">
@@ -153,14 +156,16 @@ import AuthContext from './AuthContext';
         </div> */}
       </header>
 
+      <div className="search-main">
       <div className="search-container">
           <input 
             type="text" 
-            className="search-input" 
+            className="i12" 
             value={search_td} 
             onChange={(e) => setSearch_td(e.target.value)} 
             placeholder="Search notes..."  
           />
+        </div>
         </div>
 
 
@@ -174,14 +179,14 @@ import AuthContext from './AuthContext';
    checked={note.status} 
    onChange={(e) => handleCheckboxChange(note.id, e.target.checked)}/>
   {note.title} <button className='rem-button' 
-  onClick={()=>handleRemove(note.id)}>Remove</button></p>))}
+  onClick={()=>handleRemove(note.id)}><img src={svg} alt='remove' height='40' width='60' /></button></p>))}
   </div>
 
 </div>
 <p className='error'>{error}</p>
 <div className='create-div'>
 <input  type="text" className='input-text' value={input}  onChange={(e) => setInput(e.target.value)}  placeholder='Enter item'/>
-<button type="submit" className='add-button' onClick={handleAddItem}>Add Note</button>
+<button type="submit" className='add-button' onClick={handleAddItem}><img src={add} alt='add' height='70' width='85'/></button>
 </div>
 </div>
 </>
