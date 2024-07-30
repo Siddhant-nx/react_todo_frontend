@@ -25,18 +25,6 @@ import axios from 'axios'
             setError('');
         }
 
-        // const sendOtp = async () => {
-        //     try {
-        //       const response = await axios.post('http://localhost:3000/send-otp', { email });
-        //       console.log(response.data);
-        //     } catch (error) {
-        //       console.log('Error sending OTP');
-        //     }
-        //   };
-    // if(password.length<6){
-    //     setError('Password should be atleast 6 character long');
-    //     return;
-    // }    
         if(user && email && password){
         const newUser = {
           name: user,
@@ -45,16 +33,16 @@ import axios from 'axios'
         };
     try{
         const response = await axios.post(`http://${ip}:8000/api/account/register/`, newUser);
-        setSignup([...signup,response.data])
+        setSignup([...signup,response.data]) 
         console.log(response.data)
 
         setUser('');
-        setEmail('');
+        setEmail(''); 
         setPassword('');
         setError('');
         setSubmitted(true);
-
-        navigate('/SignupVerify');
+        console.log('otp sent')
+        navigate('/SignupVerify', {state: {email: email}});
 
     }catch(error){
         console.log(error);
