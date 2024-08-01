@@ -25,7 +25,7 @@ import axios from 'axios'
             if(password === rpassword){
 
             setError('')
-            const response = await axios.post('http://localhost:8000/api/account/register/reset-password/ ',data);
+            const response = await axios.post('http://localhost:8000/api/account/reset-password/ ',data);
             console.log(response.data);
             alert('Password changed please login again')
             navigate('/Login')
@@ -34,20 +34,21 @@ import axios from 'axios'
 
               setError('Password combination does not match')
             }
-          }else{
+          }else{ 
             alert('enter password')
           }
 
           console.log("password changed")
         } catch (error) {
           console.log('Error Changing password');
+          alert('error changing password')
         }  
     }
 
   return (
     <>
     <h2 className='verify-h2'>Reset Password</h2>
-    <div className='container3'>
+    <div className='container4'>
         <input type="text" className='i1' placeholder='Enter new password' value={password} onChange={(e)=> setPassword(e.target.value)} required/>
         <input type="text" className='i1' placeholder='Re-enter new password' value={rpassword} onChange={(e)=> setRpassword(e.target.value)} required/>
         <button type='submit' className='LButton' onClick={reset}>Reset</button>

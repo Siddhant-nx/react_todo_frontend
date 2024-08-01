@@ -8,10 +8,10 @@ import axios from 'axios';
     const [error, setError] = useState('');
     const [otp, setOtp] = useState('');
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const sendOtp = async (e) => {
           e.preventDefault();
            try {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 setError('Invalid email');
                 return;
@@ -20,13 +20,13 @@ import axios from 'axios';
             }
              const response = await axios.post('http://localhost:8000/api/account/forgot-password/', {email});
              console.log(response.data);
-             console.log("resend-otp")
+             console.log("otp sent")
            } catch (error) {
              console.log('Error sending OTP');
            }
         };
   
-        const verify= async(e)=>{
+        const verify= async(e)=>{ 
           e.preventDefault();
           const data={
             email: email,
@@ -37,16 +37,26 @@ import axios from 'axios';
             console.log(response.data);
 
             if(email && otp){
+              if (!emailRegex.test(email)) {
+                setError('Invalid email');
+                return;
+            } else {
+                setError('');
+            }
+
             if(response.status === 200){
+              
             console.log("verified")
             navigate('/ChangePass', {state: {email: email, otp : otp}} );
             } else {
               console.log('Invalid OTP');
             }
+          } else {
+            setError('Enter both fields correctly')
           }
           
           } catch (error) {
-            alert('Invalid OTP')
+            setError('Invalid otp')
             console.log('Error verifying OTP');
           }  
       }

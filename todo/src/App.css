@@ -14,8 +14,8 @@
   text-align: center;
 }
 .container{
-  /* box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); */
-  /* background-color:white; */
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+   background-color:white;
   border: none;
   border-radius: 6px;
   padding: 25px;
@@ -30,7 +30,7 @@ form{
 
 .signup{
   flex-direction: column;
-  height: 55vh;
+  height: 47.5vh;
   margin:0;
 }
 /* .userdiv{
@@ -139,15 +139,15 @@ margin-top: 120px;
 }
 
 .c2{
-  /* box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5); */
-  /* background-color: white; */
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5); 
+  background-color: white;
   border: none;
   border-radius: 6px;
   padding: 25px;
   max-width: 400px;
   margin: auto;
   /* margin-top: 25px; */
-  height: 51vh;
+  height: 45.5vh;
 }
 
 body{
@@ -366,8 +366,35 @@ body{
   padding: 25px;
   max-width: 400px;
   margin: auto;
-  /* height: 51vh; */
+  height: 58vh;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
+  border: none;
+  background-color: white;
+  border-radius:10px;
 }
+.container4{
+  text-align: center;
+  align-items: center;
+  padding: 25px;
+  max-width: 400px;
+  margin: auto;
+  height: 38vh;
+  background-color: white;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+.container5{
+  text-align: center;
+  align-items: center;
+  padding: 25px;
+  max-width: 400px;
+  margin: auto;
+  height: 48vh;
+  background-color: white;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
 .LButton2{
   background-color: rgb(221, 183, 89); /* (139, 204, 226);*/
   border: none;

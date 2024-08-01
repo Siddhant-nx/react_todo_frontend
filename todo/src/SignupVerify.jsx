@@ -7,6 +7,7 @@ import axios from 'axios'
     const [otp, setOtp] = useState('');
     const location = useLocation();
     const { email } = location.state || {};
+    const [error, setError] = useState('');
 
     const sendOtp = async (e) => {
      e.preventDefault();
@@ -22,7 +23,7 @@ import axios from 'axios'
     const verify= async(e)=>{
         e.preventDefault();
         const data={
-          email: email,
+          email: email, 
           otp: otp
         }
         try {
@@ -30,12 +31,14 @@ import axios from 'axios'
           console.log(response.data);
 
           if(otp){
+
           if(response.status === 200){
+
           console.log("verified")
           navigate('/Login');
-          }else{
-            console.log('invalid otp')
           }
+        } else {
+          alert('enter otp')
         }
           
         } catch (error) {
@@ -46,12 +49,13 @@ import axios from 'axios'
 
   return (
     <>
-    <h2 class='verify-h2'>Verifying Email</h2>
-    <div className='container3'>
+    <h2 className='verify-h2'>Verifying Email</h2>
+    <div className='container5'>
         <label className='otp-label'>Enter an OTP sent to your Registered Email Address</label>
         <input type="text" className='i1' placeholder='enter . . .' value={otp} onChange={(e)=> setOtp(e.target.value)}/>
         <button type='submit' className='LButton2' onClick={sendOtp}>Resend OTP</button>
         <button type='submit' className='LButton2' onClick={verify}>Verify</button>
+        <p>{error}</p>
     </div>
     </>
   )
