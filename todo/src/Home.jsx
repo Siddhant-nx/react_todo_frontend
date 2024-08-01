@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import AuthContext from './AuthContext';
 import svg from './svg.svg'
-import add from './add.svg'
+// import add from './add.svg'
 import log from './logout.svg'
+import add from './addbutton.svg'
 
  function Home() {
     const [notes, setNotes] = useState([]);
@@ -141,8 +142,8 @@ import log from './logout.svg'
   return (
     <>
       <header className='header'>
-        <button onClick={handleLogout} className='logout-btn'>logout  <img src={log} height='40' width='40'/></button>
-        <p>To Do List</p>
+        <button onClick={handleLogout} className='logout-btn'><img src={log} height='40' width='40'/></button>
+        <p className='todo-head'>To Do List</p>
         
         {/* <div className="select-right">
         <label htmlFor="filter">Filter Notes</label><br />
@@ -184,9 +185,9 @@ import log from './logout.svg'
 
 </div>
 <p className='error'>{error}</p>
-<div className='create-div'>
-<input  type="text" className='input-text' value={input}  onChange={(e) => setInput(e.target.value)}  placeholder='Enter item'/>
-<button type="submit" className='add-button' onClick={handleAddItem}><img src={add} alt='add' height='70' width='85'/></button>
+<div className='create-div2'>
+<input  type="text" className='create-div' value={input}  onChange={(e) => setInput(e.target.value)}  placeholder='Enter item'/>
+<button type="submit" className='add-button ' onClick={handleAddItem}><img className='addItemSVG' src={add} alt='add' height='70' width='85'/></button>
 </div>
 </div>
 </>

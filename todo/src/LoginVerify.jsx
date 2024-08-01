@@ -9,6 +9,7 @@ import axios from 'axios';
     const [otp, setOtp] = useState('');
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
         const sendOtp = async (e) => {
           e.preventDefault();
            try {
@@ -21,6 +22,7 @@ import axios from 'axios';
              const response = await axios.post('http://localhost:8000/api/account/forgot-password/', {email});
              console.log(response.data);
              console.log("otp sent")
+             alert('OTP has been sent')
            } catch (error) {
              console.log('Error sending OTP');
            }

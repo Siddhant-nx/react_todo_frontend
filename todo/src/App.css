@@ -15,7 +15,7 @@
 }
 .container{
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-   background-color:white;
+  background-color:rgba(230, 232, 167, 1);
   border: none;
   border-radius: 6px;
   padding: 25px;
@@ -65,7 +65,7 @@ form{
 .LButton{
   padding: 10px;
   color: rgb(0, 0, 0);
-  background-color: rgb(221, 183, 89); /* (139, 204, 226);*/
+  background-color:rgba(177, 173, 75, 1); /* (139, 204, 226);*/
   border: none;
   border-radius: 10px;
   font-weight: 620;
@@ -82,7 +82,7 @@ form{
   margin-left: 1.5cap;
 }
 .LButton:hover{
-  background-color: rgb(228, 195, 113);
+  background-color: rgb(214, 210, 92);
   }
   .sign-btn{
     text-decoration: none;
@@ -140,7 +140,7 @@ margin-top: 120px;
 
 .c2{
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5); 
-  background-color: white;
+  background-color:rgba(230, 232, 167, 1);
   border: none;
   border-radius: 6px;
   padding: 25px;
@@ -210,13 +210,6 @@ body{
   display: flex;
 }
 
-.create-div{
- display: flex;
- justify-content:center;
- height: 45px;
- margin-bottom: 50px;
-}
-
 .main-container{
   margin-top: 20px;
   padding: 20px;
@@ -260,20 +253,6 @@ body{
   padding: 10px 5px;
 }
 
-.add-button{
-  /* border: none;
-  color: white;
-  background-color: rgb(0, 0, 0);
-  border-radius: 10px;
-  margin-left: 10px;
-  cursor: pointer;
-  height: 10vh;
-  width: 15vh;
-  font-weight: 500; */
-  border: none;
-  background: transparent;
-}
-
 .input-text{
   border: 1px solid black;
   border-radius: 5px;
@@ -290,10 +269,12 @@ body{
   left: 0;
 }
 
-.header p{
+.todo-head{
   text-align: center;
   font-size: xx-large;
-}
+  font-weight: bolder;
+  color: black;
+ }
 
 .logout-btn{
   border: none;
@@ -309,10 +290,7 @@ body{
   padding: 33px;
 }
 
-.create-div{
-  margin-top: 2px;
-  position: sticky;
-}
+
 .select-right{
   text-align: left;
 }
@@ -369,7 +347,7 @@ body{
   height: 58vh;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
   border: none;
-  background-color: white;
+  background-color: rgba(230, 232, 167, 1);
   border-radius:10px;
 }
 .container4{
@@ -379,7 +357,7 @@ body{
   max-width: 400px;
   margin: auto;
   height: 38vh;
-  background-color: white;
+  background-color: rgba(230, 232, 167, 1);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
 }
@@ -390,13 +368,13 @@ body{
   max-width: 400px;
   margin: auto;
   height: 48vh;
-  background-color: white;
+  background-color: rgba(230, 232, 167, 1);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
 }
 
 .LButton2{
-  background-color: rgb(221, 183, 89); /* (139, 204, 226);*/
+  background-color: rgba(177, 173, 75, 1);   /* rgb(221, 183, 89);*/
   border: none;
   border-radius: 10px;
   font-weight: 620;
@@ -413,6 +391,10 @@ body{
   margin-left: 1.5cap;
 }
 
+.LButton2:hover{
+  background-color: rgb(214, 210, 92);/* rgb(221, 191, 115); */
+}
+
 .verify-h2{
   text-align: center;
   margin-top: 100px;
@@ -424,7 +406,53 @@ body{
 }
 
 .i12{
-    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.6);
+  border: none;
+  color: rgb(0, 0, 0);
+  border-radius: 7px;
+  width: 500px;
+  padding: 8px;
+  margin: 15px; 
+  margin-bottom: 1px;
+  margin-left: 20px;
+  margin-top: 40px;
+}
+.create-div2{
+text-align: center;
+align-items: center;
+height: 45px;
+margin-bottom: 50px;
+position: sticky;
+margin-top: 2px;
+}
+ .create-div{
+  text-align: center;
+  align-items: center;
+  height: 45px;
+  margin-bottom: 50px;
+  position: sticky;
+  margin-top: 2px;
+  border: none;
+  border-radius: 7px;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.6);
+  width: 350px;
+ }
+
+ .add-button{
+  border: none;
+  color: white;
+  /* background-color: rgb(0, 0, 0); */
+  border-radius: 10px;
+  margin-left: -10px;
+  cursor: pointer;
+  height: 10vh;
+  width: 15vh;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+ }
+  
+    /* box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.6);
     border: none;
     color: rgb(0, 0, 0);
     border-radius: 7px;
@@ -433,5 +461,13 @@ body{
     margin: 15px; 
     margin-bottom: 1px;
     margin-left: 20px;
-    margin-top: 40px;
-}
+    margin-top: 40px; */
+
+   /* box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.6);
+   border: none;
+   color: rgb(0, 0, 0);
+   border-radius: 7px;
+   width: 400px;
+   padding: 8px;
+   margin: 15px;  */
+  

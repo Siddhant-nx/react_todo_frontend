@@ -14,7 +14,8 @@ import axios from 'axios'
       try {
         const response = await axios.post('http://localhost:8000/api/account/register/resendotp/', {email});
         console.log(response.data);
-        console.log("resend-otp")
+        console.log("resent-otp")
+        alert('OTP has been sent')
       } catch (error) {
         console.log('Error sending OTP');
       }
