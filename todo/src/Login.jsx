@@ -7,7 +7,7 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [spassword, setSpassword] = useState(false);
+    // const [spassword, setSpassword] = useState(false);
     const ip = '127.0.0.1';
     
     const { setAuth } = useContext(AuthContext);
@@ -37,9 +37,9 @@ function Login() {
         }
     };
 
-    const togglePassword = () => {
-        setSpassword(!spassword);
-    };
+    // const togglePassword = () => {
+    //     setSpassword(!spassword);
+    // };
 
     const verify =(e)=>{
         e.preventDefault();
@@ -65,7 +65,7 @@ function Login() {
 
                             {/* <label htmlFor="user">*Password </label> */}
                             <input
-                                type={spassword ? 'text' : 'password'}
+                                type='password' /*{spassword ? 'text' : 'password'}*/
                                 className='i3'
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}

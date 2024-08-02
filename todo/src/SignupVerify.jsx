@@ -8,11 +8,12 @@ import axios from 'axios'
     const location = useLocation();
     const { email } = location.state || {};
     const [error, setError] = useState('');
+    const ip = '127.0.0.1';
 
     const sendOtp = async (e) => {
      e.preventDefault();
       try {
-        const response = await axios.post('http://localhost:8000/api/account/register/resendotp/', {email});
+        const response = await axios.post(`http://${ip}:8000/api/account/register/resendotp/`, {email});
         console.log(response.data);
         console.log("resent-otp")
         alert('OTP has been sent')
@@ -28,7 +29,7 @@ import axios from 'axios'
           otp: otp
         }
         try {
-          const response = await axios.post('http://localhost:8000/api/account/register/verifyotp/ ', data);
+          const response = await axios.post(`http://${ip}:8000/api/account/register/verifyotp/`, data);
           console.log(response.data);
 
           if(otp){
@@ -56,7 +57,7 @@ import axios from 'axios'
         <input type="text" className='i1' placeholder='enter . . .' value={otp} onChange={(e)=> setOtp(e.target.value)}/>
         <button type='submit' className='LButton2' onClick={sendOtp}>Resend OTP</button>
         <button type='submit' className='LButton2' onClick={verify}>Verify</button>
-        <p>{error}</p>
+        <p className='error'>{error}</p>
     </div>
     </>
   )

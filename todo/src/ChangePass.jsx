@@ -9,6 +9,7 @@ import axios from 'axios'
     const [error, setError] = useState('')
     const location = useLocation();
     const {email, otp} = location.state || {};
+    const ip = '127.0.0.1';
 
     const reset=async(e)=>{
         e.preventDefault();
@@ -25,7 +26,7 @@ import axios from 'axios'
             if(password === rpassword){
 
             setError('')
-            const response = await axios.post('http://localhost:8000/api/account/reset-password/ ',data);
+            const response = await axios.post(`http://${ip}:8000/api/account/reset-password/`,data);
             console.log(response.data);
             alert('Password changed please login again')
             navigate('/Login')

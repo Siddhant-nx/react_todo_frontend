@@ -12,7 +12,7 @@ import axios from 'axios'
 
     const [submitted, setSubmitted] = useState('');
     const [error, setError] = useState('');
-    const [spassword, setSpassword] = useState(false);
+    // const [spassword, setSpassword] = useState(false);
     const ip = '127.0.0.1';
 
     const handleSubmit = async (e)=>{ 
@@ -77,9 +77,8 @@ import axios from 'axios'
 
                 {/* <label htmlFor="user">*Email</label> */}
                 <input type="text" className='i2' value={email} onChange={(e)=>setEmail(e.target.value)}  placeholder='Enter Email'required/>
-
                 {/* <label htmlFor="user">*Password </label> */}
-                <input type={spassword ? 'text' : 'password'}
+                <input type='password'
                  className='i3'
                   value={password} onChange={(e)=> setPassword(e.target.value)}  placeholder='Enter Password' required/>
                 {/* <button type='button' className='toggle-password' onClick={togglePassword}> {spassword ? 'Hide Password ' : 'Show Password'} </button> */}

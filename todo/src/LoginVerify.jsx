@@ -7,6 +7,7 @@ import axios from 'axios';
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
     const [otp, setOtp] = useState('');
+    const ip = '127.0.0.1';
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -20,7 +21,7 @@ import axios from 'axios';
             } else {
                 setError('');
             }
-             const response = await axios.post('http://localhost:8000/api/account/forgot-password/', {email});
+             const response = await axios.post(`http://${ip}:8000/api/account/forgot-password/`, {email});
              console.log(response.data);
              console.log("otp sent")
              alert('OTP has been sent')
@@ -40,7 +41,7 @@ import axios from 'axios';
           try {
           
             if(email && otp){
-            const response = await axios.post('http://localhost:8000/api/account/register/verifyotp/ ', data);
+            const response = await axios.post(`http://${ip}:8000/api/account/register/verifyotp/`, data);
             console.log(response.data);
 
             if(response.status === 200){
