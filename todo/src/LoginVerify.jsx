@@ -13,6 +13,7 @@ import axios from 'axios';
         const sendOtp = async (e) => {
           e.preventDefault();
            try {
+            
             if (!emailRegex.test(email)) {
                 setError('Invalid email');
                 return;
@@ -23,8 +24,10 @@ import axios from 'axios';
              console.log(response.data);
              console.log("otp sent")
              alert('OTP has been sent')
+
            } catch (error) {
              console.log('Error sending OTP');
+             setError('User does not exist, please Singup first')
            }
         };
   
@@ -35,16 +38,10 @@ import axios from 'axios';
             otp: otp
           }
           try {
+          
+            if(email && otp){
             const response = await axios.post('http://localhost:8000/api/account/register/verifyotp/ ', data);
             console.log(response.data);
-
-            if(email && otp){
-              if (!emailRegex.test(email)) {
-                setError('Invalid email');
-                return;
-            } else {
-                setError('');
-            }
 
             if(response.status === 200){
               
@@ -54,11 +51,11 @@ import axios from 'axios';
               console.log('Invalid OTP');
             }
           } else {
-            setError('Enter both fields correctly')
+            setError('Please Enter both fields correctly')
           }
           
           } catch (error) {
-            setError('Invalid otp')
+            setError('Invalid OTP !')
             console.log('Error verifying OTP');
           }  
       }

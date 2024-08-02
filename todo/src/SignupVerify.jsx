@@ -39,7 +39,7 @@ import axios from 'axios'
           navigate('/Login');
           }
         } else {
-          alert('enter otp')
+          setError('enter otp')
         }
           
         } catch (error) {

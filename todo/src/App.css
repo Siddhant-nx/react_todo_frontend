@@ -120,6 +120,7 @@ label{
   text-align: center;
   font-size: 2.5vh;
   margin-top: 20px;
+  font-weight: 500;
 }
 
 .password-container{
@@ -129,7 +130,8 @@ label{
 /* Login page */
 .login-h2{
 text-align: center;
-margin-top: 120px;
+margin-top: 100px;
+margin-bottom: 30px;
 }
 
 .form2{
@@ -204,6 +206,10 @@ body{
   width: 25px;
   height: 25px;
   margin-left: 4px;
+  cursor: pointer;
+}
+.strikethrough{
+  text-decoration: line-through;
 }
 
 .search-con{
@@ -289,7 +295,6 @@ body{
   border: 1px solid black;
   padding: 33px;
 }
-
 
 .select-right{
   text-align: left;
@@ -398,7 +403,7 @@ body{
 .verify-h2{
   text-align: center;
   margin-top: 100px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 .otp-label{
   font-weight: 500;
@@ -435,7 +440,7 @@ margin-top: 2px;
   border: none;
   border-radius: 7px;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.6);
-  width: 350px;
+  width: 400px;
  }
 
  .add-button{
@@ -450,6 +455,11 @@ margin-top: 2px;
   font-weight: 500;
   border: none;
   background: transparent;
+ }
+ .error2{
+  margin-top: 40px;
+  color: red;
+  font-weight: 600;
  }
   
     /* box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.6);

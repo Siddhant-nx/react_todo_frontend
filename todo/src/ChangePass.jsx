@@ -31,11 +31,10 @@ import axios from 'axios'
             navigate('/Login')
 
             }else{
-
               setError('Password combination does not match')
             }
           }else{ 
-            alert('enter password')
+            setError('enter both fields correctly')
           }
 
           console.log("password changed")
@@ -52,7 +51,7 @@ import axios from 'axios'
         <input type="text" className='i1' placeholder='Enter new password' value={password} onChange={(e)=> setPassword(e.target.value)} required/>
         <input type="text" className='i1' placeholder='Re-enter new password' value={rpassword} onChange={(e)=> setRpassword(e.target.value)} required/>
         <button type='submit' className='LButton' onClick={reset}>Reset</button>
-    <p className=''>{error}</p>
+    <p className='error'>{error}</p>
     </div>
     </>
   )

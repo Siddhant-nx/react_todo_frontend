@@ -142,7 +142,7 @@ import add from './addbutton.svg'
   return (
     <>
       <header className='header'>
-        <button onClick={handleLogout} className='logout-btn'><img src={log} height='40' width='40'/></button>
+        <button onClick={handleLogout} className='logout-btn'><img alt='img' src={log} height='40' width='40'/></button>
         <p className='todo-head'>To Do List</p>
         
         {/* <div className="select-right">
@@ -174,13 +174,20 @@ import add from './addbutton.svg'
 
 <div className="notes-container">
   <div className="notes">
+
   {notes.filter(note => note.title.toLowerCase().includes(search_td.toLowerCase())).map((note) => 
   (<p className='notes-main' key={note.id}>
-  <input type="checkbox" className='checkbox' 
-   checked={note.status} 
+
+  <input type="checkbox" className='checkbox' checked={note.status} 
    onChange={(e) => handleCheckboxChange(note.id, e.target.checked)}/>
-  {note.title} <button className='rem-button' 
-  onClick={()=>handleRemove(note.id)}><img src={svg} alt='remove' height='40' width='60' /></button></p>))}
+  
+  <span className={note.status ? 'strikethrough': ''}>
+  {note.title} 
+  </span>
+  
+  <button className='rem-button' onClick={()=>handleRemove(note.id)}>
+  <img src={svg} alt='remove' height='40' width='60' /></button></p>))}
+  
   </div>
 
 </div>

@@ -52,13 +52,13 @@ import axios from 'axios'
 
 };
 
- const togglePassword = (e) => {
-    if(password===''){
-        setPassword('');
-    }else{
-        setSpassword(!spassword);
-    }
- };
+//  const togglePassword = (e) => {
+//     if(password===''){
+//         setPassword('');
+//     }else{
+//         setSpassword(!spassword);
+//     }
+//  };
 
   return (
     <>
