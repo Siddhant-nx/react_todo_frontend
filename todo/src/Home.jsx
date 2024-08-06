@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import AuthContext from './AuthContext';
 import svg from './svg.svg'
-// import add from './add.svg'
 import log from './logout.svg'
 import add from './addbutton.svg'
 

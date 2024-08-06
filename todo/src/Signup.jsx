@@ -49,7 +49,6 @@ import axios from 'axios'
         setError('Server error');
     }   
     }
-
 };
 
 //  const togglePassword = (e) => {
@@ -71,21 +70,13 @@ import axios from 'axios'
         
             <div className='signup'>
             <div className='userdiv'>
-                {/* <h2>Signup</h2> */}
-                {/* <label htmlFor="user">*Username</label> */}
                 <input type='text' className='i1' value={user} onChange={(e)=> setUser(e.target.value)} placeholder='Enter Username' required />
+                
+                <input type="text" className='i2' value={email} onChange={(e)=> setEmail(e.target.value)}  placeholder='Enter Email'required/>
 
-                {/* <label htmlFor="user">*Email</label> */}
-                <input type="text" className='i2' value={email} onChange={(e)=>setEmail(e.target.value)}  placeholder='Enter Email'required/>
-                {/* <label htmlFor="user">*Password </label> */}
-                <input type='password'
-                 className='i3'
-                  value={password} onChange={(e)=> setPassword(e.target.value)}  placeholder='Enter Password' required/>
-                {/* <button type='button' className='toggle-password' onClick={togglePassword}> {spassword ? 'Hide Password ' : 'Show Password'} </button> */}
-
-                {/* <Link to="/Home" className='LButton' onClick={handleSubmit}>Singup</Link> */}
+                <input type='password' className='i3' value={password} onChange={(e)=> setPassword(e.target.value)}  placeholder='Enter Password' required/>
+               
                 <button type='submit' className="LButton">Signup</button>
-
                 
                 <div className='end-div'> 
                 <label className='already-user'>Already user?<br/><Link to="/Login" className='sign-btn'>Singin</Link> </label>
@@ -95,10 +86,7 @@ import axios from 'axios'
             </div>
             </div>
         </form>
-        
-    )
-    }
-
+    )  }
 </div>
 </>
   );
