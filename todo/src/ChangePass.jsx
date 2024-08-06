@@ -2,6 +2,10 @@ import React, {useState} from 'react'
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
  function ChangePass() {
     const navigate = useNavigate();
     const [password, setPassword] = useState('');
@@ -28,7 +32,18 @@ import axios from 'axios'
             setError('')
             const response = await axios.post(`http://${ip}:8000/api/account/reset-password/`,data);
             console.log(response.data);
-            alert('Password changed please login again')
+            // alert('Password changed please login again')
+
+            toast.success('Password changed please login again', {
+              position: "top-center",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
             navigate('/Login')
 
             }else{
@@ -42,6 +57,18 @@ import axios from 'axios'
         } catch (error) {
           console.log('Error Changing password');
           alert('error changing password')
+
+          toast.error('error changing password', {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+
         }  
     }
 
@@ -53,6 +80,8 @@ import axios from 'axios'
         <input type="text" className='i1' placeholder='Re-enter new password' value={rpassword} onChange={(e)=> setRpassword(e.target.value)} required/>
         <button type='submit' className='LButton' onClick={reset}>Reset</button>
     <p className='error'>{error}</p>
+
+    <ToastContainer />
     </div>
     </>
   )

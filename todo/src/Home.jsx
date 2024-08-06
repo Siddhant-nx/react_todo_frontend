@@ -51,6 +51,14 @@ import add from './addbutton.svg'
     logout();
     navigate('/login')
   }
+
+  //set timout msg function
+  function errorMessage(){
+    setError('');
+  }
+
+
+  ///--------------------------
     const handleAddItem = async (e) => {
         e.preventDefault();
         if (input) {
@@ -79,6 +87,8 @@ import add from './addbutton.svg'
         }
       } else {
         setError('Enter a note');
+
+        setTimeout(errorMessage,2000)
       }
     }
 
@@ -186,7 +196,7 @@ import add from './addbutton.svg'
   </span>
   
   <button className='rem-button' onClick={()=>handleRemove(note.id)}>
-  <img src={svg} alt='remove' height='40' width='60' /></button></p>))}
+  <img src={svg} alt='remove' height='30' width='30' /></button></p>))}
   
   </div>
 

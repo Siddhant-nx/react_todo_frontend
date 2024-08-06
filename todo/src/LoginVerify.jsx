@@ -24,7 +24,18 @@ import axios from 'axios';
              const response = await axios.post(`http://${ip}:8000/api/account/forgot-password/`, {email});
              console.log(response.data);
              console.log("otp sent")
-             alert('OTP has been sent')
+            //  alert('OTP has been sent')
+
+             toast.success('OTP has been sent', {
+              position: "top-center",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
 
            } catch (error) {
              console.log('Error sending OTP');
