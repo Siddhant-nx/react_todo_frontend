@@ -2,6 +2,11 @@ import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 // siddd
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
  function LoginVerify() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
@@ -83,6 +88,8 @@ import axios from 'axios';
         <button type='submit' className='LButton2' onClick={sendOtp}>Resend</button>
         <button type='submit' className='LButton2' onClick={verify}>Confirm</button>
         <p className='error2'>{error}</p>
+
+        <ToastContainer/>
     </div>
     </>
   )
