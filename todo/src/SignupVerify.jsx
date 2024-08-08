@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
  function SignupVerify() {
     const navigate = useNavigate();
     const [otp, setOtp] = useState('');
@@ -16,7 +20,19 @@ import axios from 'axios'
         const response = await axios.post(`http://${ip}:8000/api/account/register/resendotp/`, {email});
         console.log(response.data);
         console.log("resent-otp")
-        alert('OTP has been sent')
+        // alert('OTP has been sent')
+
+        toast.success('OTP has been sent', {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        
       } catch (error) {
         console.log('Error sending OTP');
       }
@@ -44,7 +60,19 @@ import axios from 'axios'
         }
           
         } catch (error) {
-          alert('Invalid OTP');
+          // alert('Invalid OTP');
+
+          toast.error('Invalid OTP', {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+          
           console.log('Error verifying OTP');
         }  
     }
@@ -58,6 +86,8 @@ import axios from 'axios'
         <button type='submit' className='LButton2' onClick={sendOtp}>Resend OTP</button>
         <button type='submit' className='LButton2' onClick={verify}>Verify</button>
         <p className='error'>{error}</p>
+        <ToastContainer />
+
     </div>
     </>
   )
