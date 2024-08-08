@@ -3,8 +3,9 @@ import {Link, useNavigate} from 'react-router-dom';
 import axios from 'axios'
 
 
- function Signup() {
-    const [user, setUser] = useState('');
+ function ManagerReg() {
+    const [id, setId] = useState('');
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -25,9 +26,10 @@ import axios from 'axios'
             setError('');
         }
 
-        if(user && email && password){
+    if(id && name && email && password){
         const newUser = {
-          name: user,
+            id: id,
+          name: name,
           email: email,
           password: password,
         };
@@ -36,7 +38,8 @@ import axios from 'axios'
         setSignup([...signup,response.data]) 
         console.log(response.data)
 
-        setUser('');
+        setId('');
+        setName('');
         setEmail(''); 
         setPassword('');
         setError('');
@@ -61,22 +64,19 @@ import axios from 'axios'
 
   return (
     <>
-    <button className='admin-btn'><Link to="/ManagerReg">Admin</Link></button>
-    <p className='p1'>Create an Account</p>
-    <div className='container'>
+    <Link to='/UserLog'>Home</Link>
+    <p className='p1'>Welcome, Admin</p>
+    <div className='container-M'>
     {submitted?( 
        navigate('/Signup_verify')
     ):( 
         <form  onSubmit={handleSubmit} >
-        
             <div className='signup'>
             <div className='userdiv'>
-                <input type='text' className='i1' value={user} onChange={(e)=> setUser(e.target.value)} placeholder='Enter Username' required />
-                
-                <input type="text" className='i2' value={email} onChange={(e)=> setEmail(e.target.value)}  placeholder='Enter Email'required/>
-
-                <input type='password' className='i3' value={password} onChange={(e)=> setPassword(e.target.value)}  placeholder='Enter Password' required/>
-               
+                <input type="text" className='i1' value={id} onChange={(e)=> setId(e.target.value)}  placeholder='Enter ID' reguired/>
+                <input type='text' className='i1' value={name} onChange={(e)=> setName(e.target.value)} placeholder='Enter Name' required />
+                <input type="text" className='i1' value={email} onChange={(e)=> setEmail(e.target.value)}  placeholder='Enter Email'required/>
+                <input type='password' className='i1' value={password} onChange={(e)=> setPassword(e.target.value)}  placeholder='Enter Password' required/>
                 <button type='submit' className="LButton">Signup</button>
                 
                 <div className='end-div'> 
@@ -93,4 +93,4 @@ import axios from 'axios'
   );
 }
 
-export default Signup;
+export default ManagerReg;

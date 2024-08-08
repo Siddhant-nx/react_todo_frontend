@@ -26,11 +26,7 @@ function Login() {
             setAuth(access); 
             console.log('token :',access);
 
-        //     if (password.length < 6) {
-        //     setError('*Password should be at least 6 characters long');
-        //     return;
-        // }
-        navigate('/Home');
+            navigate('/Home');
         } catch (error) {
             console.error('Error logging in:', error);
             setError('Invalid email or password');
@@ -48,6 +44,7 @@ function Login() {
 
     return (
         <> 
+            <Link to='/UserLog'>Home</Link>
             <h2 className='login-h2'>Hi, Welcome Back</h2>
             <div className='c2'>
                 <form className='form2' onSubmit={handleSubmit}>

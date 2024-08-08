@@ -1,13 +1,13 @@
 import React, {useState, useContext, useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
-import AuthContext from './AuthContext';
-import svg from './svg.svg'
-import log from './logout.svg'
-import add from './addbutton.svg'
-import search from './part 2/search.svg' 
+import AuthContext from '../AuthContext';
+import svg from '../svg.svg'
+import log from '../logout.svg'
+import add from '../addbutton.svg'
+import search from './search.svg'
 
- function Home() {
+ function UserLog() {
     const [notes, setNotes] = useState([]);
     const [input, setInput] = useState('');
     const [error, setError] = useState('');
@@ -33,7 +33,7 @@ import search from './part 2/search.svg'
         console.log(getnote.data)
         setNotes(getnote.data)
 
-      }else{  console.log('token not found'); }
+      }else{ console.log('token not found'); }
 
       }catch(error){
       console.log(error)
@@ -43,7 +43,6 @@ import search from './part 2/search.svg'
     getAllNotes()
   } else {
     setNotes([]);
-
   }
 }, [auth]);
 
@@ -143,7 +142,7 @@ import search from './part 2/search.svg'
     <>
       <header className='header'>
         <button onClick={handleLogout} className='logout-btn'><img alt='img' src={log} height='40' width='40'/></button>
-        <p className='todo-head'>To Do List</p>
+        <p className='todo-head'>Task Management</p>
         
         {/* <div className="select-right">
         <label htmlFor="filter">Filter Notes</label><br />
@@ -156,17 +155,12 @@ import search from './part 2/search.svg'
         </select>
         </div> */}
       </header>
-    
+        <Link to='/UserProgress'>view user</Link>
       <div className="search-main">
       <div className="search-container">
-          <input 
-            type="text" 
-            className="i12" 
-            value={search_td} 
-            onChange={(e) => setSearch_td(e.target.value)} 
-            placeholder="Search notes..."  
-          />
-          <img src={search} height='40' width='40' alt="img" />
+          <input type="text" className="i12" value={search_td} onChange={(e) => setSearch_td(e.target.value)} 
+            placeholder="Search user..." />
+            <img src={search} alt="img" height='40' width='40'/>
         </div>
         </div>
 
@@ -193,11 +187,11 @@ import search from './part 2/search.svg'
 
 </div>
 <p className='error'>{error}</p>
-<div className='create-div2'>
+{/* <div className='create-div2'>
 <input  type="text" className='create-div' value={input}  onChange={(e) => setInput(e.target.value)}  placeholder='Enter item'/>
 <button type="submit" className='add-button ' onClick={handleAddItem}><img className='addItemSVG' src={add} alt='add' height='70' width='85'/></button>
-</div>
+</div> */}
 </div>
 </>
 );}
-export default Home;
+export default UserLog;
